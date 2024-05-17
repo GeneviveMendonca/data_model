@@ -93,6 +93,12 @@
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC
+# MAGIC ####visualization
+
+# COMMAND ----------
+
 # MAGIC %sql
 # MAGIC SELECT 
 # MAGIC     c.CustomerID,
@@ -111,6 +117,24 @@
 # MAGIC JOIN gen_test.OrderLineItem li ON o.OrderID = li.OrderID
 # MAGIC JOIN gen_test.Product p ON li.ProductID = p.ProductID
 # MAGIC ORDER BY c.CustomerID, o.OrderDate;
+# MAGIC
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ####Calculate total sales per month:
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT YEAR(OrderDate) AS Year,
+# MAGIC        MONTH(OrderDate) AS Month,
+# MAGIC        SUM(Quantity * p.Price) AS TotalSales
+# MAGIC FROM gen_test.order o
+# MAGIC JOIN gen_test.OrderLineItem ol ON o.OrderID = ol.OrderID
+# MAGIC JOIN gen_test.Product p ON ol.ProductID = p.ProductID
+# MAGIC GROUP BY YEAR(OrderDate), MONTH(OrderDate)
+# MAGIC ORDER BY Year, Month;
 # MAGIC
 
 # COMMAND ----------

@@ -28,7 +28,7 @@
 # MAGIC -- DROP TABLE IF EXISTS Order;
 # MAGIC
 # MAGIC -- Drop OrderItem table
-# MAGIC DROP TABLE IF EXISTS OrderItem;
+# MAGIC -- DROP TABLE IF EXISTS OrderItem;
 
 # COMMAND ----------
 
@@ -203,6 +203,7 @@
 # MAGIC (311, 105, '2024-04-25', 'Completed'),
 # MAGIC (312, 102, '2024-04-30', 'Completed');
 # MAGIC
+# MAGIC
 
 # COMMAND ----------
 
@@ -216,6 +217,57 @@
 # MAGIC (420, 312, 202, 1, 'Delivered'),  -- Smartphone for Order 312
 # MAGIC (421, 312, 206, 1, 'Delivered');  -- Camera for Order 312
 # MAGIC
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC INSERT INTO gen_test.`order`(OrderID, CustomerID, OrderDate, Status)
+# MAGIC VALUES
+# MAGIC (305, 102, '2024-01-04', 'Completed'),
+# MAGIC (306, 104, '2024-01-05', 'Pending');
+# MAGIC
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC INSERT INTO gen_test.`order` (OrderID, CustomerID, OrderDate, Status)
+# MAGIC VALUES
+# MAGIC (307, 105, '2024-02-06', 'Completed');
+# MAGIC
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC INSERT INTO gen_test.`order` (OrderID, CustomerID, OrderDate, Status)
+# MAGIC VALUES
+# MAGIC (308, 103, '2024-03-06', 'Pending');
+# MAGIC
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC INSERT INTO gen_test.`order` (OrderID, CustomerID, OrderDate, Status)
+# MAGIC VALUES
+# MAGIC (309, 101, '2024-04-15', 'Completed'),
+# MAGIC (310, 104, '2024-04-20', 'Completed');
+# MAGIC
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC INSERT INTO  gen_test.`order` (OrderID, CustomerID, OrderDate, Status)
+# MAGIC VALUES
+# MAGIC (311, 105, '2024-05-25', 'Completed'),
+# MAGIC (312, 102, '2024-05-30', 'Completed');
+# MAGIC
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC INSERT INTO gen_test.orderlineitem (OrderLineItemID, OrderID, ProductID, Quantity, Status)
+# MAGIC VALUES
+# MAGIC (407, 311, 204, 2, 'Delivered'),  -- Product 204 for Order 311
+# MAGIC (408, 312, 206, 1, 'Delivered');  -- Product 206 for Order 312
 
 # COMMAND ----------
 
